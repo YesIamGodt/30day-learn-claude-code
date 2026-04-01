@@ -29,5 +29,8 @@ htmlcov/
 dist/
 build/
 
+# Worktrees
+.worktrees/
+
 # Logs
 *.log
