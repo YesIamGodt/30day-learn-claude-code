@@ -1,1 +1,117 @@
-﻿# 《从 0 到 1：30 天实现 Claude Code》> 用 Python 从 0 到 1 构建一个简化版 AI 编程 CLI Agent> **免责声明**: 本项目是一个**从零学习编程的教育教程**，旨在帮助开发者理解 AI 编程 CLI 工具的核心设计理念。**本项目与 Anthropic 公司及 Claude 产品没有任何关联**，所有代码均为本项目作者原创编写。本项目仅用于技术学习和教育目的，**严禁任何个人、机构及组织将其用于商业用途、盈利性活动或其他未经授权的场景**。若内容涉及侵犯您的合法权益或知识产权，请及时联系我们，我们将第一时间核实并予以删除。---## 概述本教程带领你用 Python 从零开始构建一个 AI 编程 CLI 工具。30 天后，你将拥有一个可以：- 在终端与 AI 对话- 调用各种工具（读写文件、执行命令、网络搜索）- 管理任务和工作区- 支持子 Agent 和 Skill 系统的 CLI Agent**语言**: English | **中文**---## 重要声明```本项目中所有代码均为本仓库作者原创编写，用于教育目的。本项目不是 Anthropic 的产品，也不是 Claude Code 的副本或衍生品。本项目使用 Anthropic 的公共 API（Claude API）进行通信，与 Anthropic 公司无附属关系。如需使用真正的 Claude Code，请访问：https://claude.ai/code```---## 技术栈- Python 3.10+- anthropic Python SDK（调用 Claude API）- Pydantic（数据验证）- Textual（富交互终端 UI）- asyncio（异步编程）## 开始学习每天一个文档 + 一套骨架代码。按顺序学习即可。```bash# 安装依赖pip install -r requirements.txt# 查看 Day 1 文档cat docs/day-01-setup.md```## 30 天学习路径### 阶段一：基础建设（Day 1-15）| 天数 | 主题 | 文件 ||------|------|------|| Day 1 | Python CLI 基础（argparse） | [docs](docs/day-01-setup.md) [src](src/day-01/main.py) || Day 2 | Python 异步编程（asyncio） | [docs](docs/day-02-async-basics.md) [src](src/day-02/main.py) || Day 3 | 调用 Anthropic API | [docs](docs/day-03-api-call.md) [src](src/day-03/main.py) || Day 4 | Tool 系统设计（ABC + 注册表） | [docs](docs/day-04-tool-system.md) [src](src/day-04/main.py) || Day 5 | 第一个工具（Bash + 文件读写） | [docs](docs/day-05-first-tools.md) [src](src/day-05/main.py) || Day 6 | 搜索工具（WebSearch + WebFetch） | [docs](docs/day-06-web-tools.md) [src](src/day-06/main.py) || Day 7 | 对话历史管理 | [docs](docs/day-07-conversation-history.md) [src](src/day-07/main.py) || Day 8 | 工具调用循环（ReAct） | [docs](docs/day-08-tool-loop.md) [src](src/day-08/main.py) || Day 9 | Token 计数与成本跟踪 | [docs](docs/day-09-token-cost.md) [src](src/day-09/main.py) || Day 10 | REPL 主循环 | [docs](docs/day-10-repl-loop.md) [src](src/day-10/main.py) || Day 11 | 权限系统 | [docs](docs/day-11-permission.md) [src](src/day-11/main.py) || Day 12 | 上下文管理 | [docs](docs/day-12-context.md) [src](src/day-12/main.py) || Day 13 | 错误处理与重试 | [docs](docs/day-13-error-handling.md) [src](src/day-13/main.py) || Day 14 | 配置管理（YAML + Pydantic） | [docs](docs/day-14-config.md) [src](src/day-14/main.py) || Day 15 | **里程碑一：最小可用 CLI** | [docs](docs/day-15-milestone1.md) [src](src/day-15/main.py) |### 阶段二：核心功能完善（Day 16-20）| 天数 | 主题 | 文件 ||------|------|------|| Day 16 | 命令系统 | [docs](docs/day-16-commands.md) [src](src/day-16/main.py) || Day 17 | 任务系统 | [docs](docs/day-17-task-system.md) [src](src/day-17/main.py) || Day 18 | 计划模式 | [docs](docs/day-18-plan-mode.md) [src](src/day-18/main.py) || Day 19 | 上下文压缩 | [docs](docs/day-19-compaction.md) [src](src/day-19/main.py) || Day 20 | **里程碑二：完整工具调用循环** | [docs](docs/day-20-milestone2.md) [src](src/day-20/main.py) |### 阶段三：高级功能（Day 21-27）| 天数 | 主题 | 文件 ||------|------|------|| Day 21 | Skill 系统 | [docs](docs/day-21-skills.md) [src](src/day-21/main.py) || Day 22 | 记忆系统 | [docs](docs/day-22-memory.md) [src](src/day-22/main.py) || Day 23 | 子 Agent | [docs](docs/day-23-multi-agent.md) [src](src/day-23/main.py) || Day 24 | MCP 协议 | [docs](docs/day-24-mcp.md) [src](src/day-24/main.py) || Day 25 | 配置迁移 | [docs](docs/day-25-config-migration.md) [src](src/day-25/main.py) || Day 26 | Feature Flag | [docs](docs/day-26-analytics.md) [src](src/day-26/main.py) || Day 27 | 插件系统 | [docs](docs/day-27-plugin.md) [src](src/day-27/main.py) |### 阶段四：收尾与发布（Day 28-30）| 天数 | 主题 | 文件 ||------|------|------|| Day 28 | Textual TUI | [docs](docs/day-28-textual-tui.md) [src](src/day-28/main.py) || Day 29 | 测试与 CI | [docs](docs/day-29-testing-ci.md) [tests](tests/) || Day 30 | **最终里程碑** | [docs](docs/day-30-final.md) [src](src/day-30/main.py) |## 三个里程碑验收标准### 里程碑一（Day 15）：最小可用 CLI- [x] 命令行参数解析- [x] AI 对话（Anthropic API）- [x] 基础工具调用（Bash / 文件读写）- [x] REPL 交互界面### 里程碑二（Day 20）：完整工具调用循环- [x] 12 个核心工具实现- [x] 命令系统完整- [x] 任务系统可用- [x] 计划模式可用- [x] 上下文压缩可用### 里程碑三（Day 30）：高级功能集成- [x] Skill 系统- [x] 记忆系统- [x] 子 Agent- [x] MCP 协议- [x] 插件系统- [x] TUI 界面- [x] 测试 + CI## 设计参考本教程以 Claude Code 的**架构设计理念**为参考，用 Python 从零实现核心概念。原版技术栈为 TypeScript + Bun + React/Ink，本教程用 Python 重现核心设计。> **提示**：如需使用完整的 Claude Code 功能，请访问 https://claude.ai/code## 目录结构```docs/      # 每日教程文档（Day 1-30）src/       # 每日骨架代码（Day 1-30）tests/     # pytest 测试用例.github/   # GitHub Actions CI 配置```---## 版权与许可```本项目所有源码版权归本仓库作者所有。本项目仅用于教育目的，严禁商业使用。本项目与 Anthropic 公司无任何关联。```
+# 《从零构建 Claude Code》互动教程网站
+
+> 浏览器里学完 30 天，无需配置环境，代码可直接运行。
+
+[![](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org)
+[![](https://img.shields.io/badge/Next.js-14-blue.svg)](https://nextjs.org)
+[![](https://img.shields.io/badge/TypeScript-5-black.svg)](https://typescriptlang.org)
+
+---
+
+## 快速开始
+
+```bash
+# 进入 tutorial-site 目录
+cd .worktrees/tutorial-site
+
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npm run dev
+
+# 打开浏览器访问
+# http://localhost:3000
+```
+
+---
+
+## 功能特点
+
+### 在线代码运行
+
+每个教程页都带可运行的代码编辑器：
+
+- **本地 JS 模式**：浏览器内置引擎，秒级启动，支持 `console.log`
+- **WebContainer 模式**：在浏览器中跑真实 Node.js，支持 `require()`、`process` 等 API
+
+### 30 天闯关地图
+
+- 学习进度自动保存（localStorage）
+- 每天打卡追踪完成状态
+- 打卡后有庆祝动画
+
+### AI 对话模拟器
+
+- 模拟 Claude Code 的 REPL 交互流程
+- 预置多个场景演示
+- 实时 Token 使用统计
+
+---
+
+## 目录结构
+
+```
+tutorial-site/
+├── app/
+│   ├── page.tsx              # 首页：闯关地图
+│   ├── day/[n]/page.tsx      # 教程页（MDX 内容）
+│   └── simulator/page.tsx     # AI 对话模拟器
+├── components/
+│   ├── DayCard.tsx           # 进度格（锁定/活跃/完成）
+│   ├── CodeEditor.tsx        # Monaco 编辑器 + 双运行时
+│   ├── ExerciseBlock.tsx     # 填空练习 + 验证反馈
+│   ├── AnswerReveal.tsx      # 答案折叠展开
+│   ├── CheckInButton.tsx      # 打卡按钮 + confetti 动画
+│   └── simulator/
+│       ├── ChatPanel.tsx     # 对话流
+│       ├── ToolPanel.tsx      # 工具面板
+│       └── TokenCounter.tsx   # Token 计数器
+├── content/days/
+│   └── 01.md ~ 30.md         # 教程内容（JS/Node.js 版本）
+└── lib/
+    ├── store.ts               # Zustand + localStorage 进度
+    ├── exercises.ts           # 填空验证逻辑
+    └── mdx.ts                # MDX 内容加载
+```
+
+---
+
+## 部署
+
+### Vercel（推荐）
+
+Vercel 部署可完整支持 WebContainer 模式。
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=YOUR_REPO_URL)
+
+```bash
+# 用 CLI 部署
+npm i -g vercel
+vercel --prod
+```
+
+### 静态导出（Netlify / GitHub Pages）
+
+```bash
+npm run build
+# 输出到 out/ 目录
+```
+
+> 注意：静态导出模式下 WebContainer 需要额外服务支持，建议使用 Vercel。
+
+---
+
+## 代码运行说明
+
+| 模式 | 适用场景 | 启动速度 | API 支持 |
+|------|---------|---------|---------|
+| 本地 JS | 纯 JS 逻辑演示 | 即时 | 浏览器标准 API |
+| WebContainer | 需要 Node.js API | 3-5 秒 | 完整 Node.js |
+
+---
+
+## 相关项目
+
+- **Python 版教程**：[../README.md](../README.md) — 用 Python 从零构建的 30 天教程
+- **在线学习网站**：[https://你的域名.vercel.app](https://vercel.com) — 浏览器里直接学
