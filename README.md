@@ -1,27 +1,31 @@
 # 《从零构建 Claude Code》互动教程网站
 
-> 浏览器里学完 30 天，无需配置环境，代码可直接运行。
+> 下载后双击即可学！内置代码编辑器，无需配置任何环境。
 
 [![](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org)
 [![](https://img.shields.io/badge/Next.js-14-blue.svg)](https://nextjs.org)
-[![](https://img.shields.io/badge/TypeScript-5-black.svg)](https://typescriptlang.org)
 
 ---
 
-## 快速开始
+## 一键启动
+
+### Windows 用户
+
+**双击 `start.bat`**，浏览器自动打开，开始学习！
+
+### Mac / Linux 用户
 
 ```bash
-# 进入 tutorial-site 目录
-cd .worktrees/tutorial-site
+chmod +x start.sh
+./start.sh
+```
 
-# 安装依赖
+### 手动启动
+
+```bash
 npm install
-
-# 启动开发服务器
 npm run dev
-
-# 打开浏览器访问
-# http://localhost:3000
+# 打开 http://localhost:3000
 ```
 
 ---
@@ -30,14 +34,14 @@ npm run dev
 
 ### 在线代码运行
 
-每个教程页都带可运行的代码编辑器：
+每个教程页都带可运行的代码编辑器，无需复制粘贴：
 
-- **本地 JS 模式**：浏览器内置引擎，秒级启动，支持 `console.log`
-- **WebContainer 模式**：在浏览器中跑真实 Node.js，支持 `require()`、`process` 等 API
+- **本地模式**：浏览器内置 JS 引擎，即点即跑，秒级响应
+- **WebContainer 模式**（需 Vercel 部署）：支持完整 Node.js API
 
 ### 30 天闯关地图
 
-- 学习进度自动保存（localStorage）
+- 学习进度自动保存，刷新不丢失
 - 每天打卡追踪完成状态
 - 打卡后有庆祝动画
 
@@ -45,7 +49,6 @@ npm run dev
 
 - 模拟 Claude Code 的 REPL 交互流程
 - 预置多个场景演示
-- 实时 Token 使用统计
 
 ---
 
@@ -53,52 +56,25 @@ npm run dev
 
 ```
 tutorial-site/
+├── start.bat              # Windows 一键启动
+├── start.sh              # Mac/Linux 一键启动
 ├── app/
 │   ├── page.tsx              # 首页：闯关地图
-│   ├── day/[n]/page.tsx      # 教程页（MDX 内容）
-│   └── simulator/page.tsx     # AI 对话模拟器
+│   ├── day/[n]/page.tsx    # 教程页（MDX 内容）
+│   └── simulator/page.tsx   # AI 对话模拟器
 ├── components/
-│   ├── DayCard.tsx           # 进度格（锁定/活跃/完成）
-│   ├── CodeEditor.tsx        # Monaco 编辑器 + 双运行时
-│   ├── ExerciseBlock.tsx     # 填空练习 + 验证反馈
-│   ├── AnswerReveal.tsx      # 答案折叠展开
-│   ├── CheckInButton.tsx      # 打卡按钮 + confetti 动画
-│   └── simulator/
-│       ├── ChatPanel.tsx     # 对话流
-│       ├── ToolPanel.tsx      # 工具面板
-│       └── TokenCounter.tsx   # Token 计数器
+│   ├── DayCard.tsx          # 进度格（锁定/活跃/完成）
+│   ├── CodeEditor.tsx       # Monaco 编辑器 + 双运行时
+│   ├── ExerciseBlock.tsx    # 填空练习 + 验证反馈
+│   ├── AnswerReveal.tsx     # 答案折叠展开
+│   └── CheckInButton.tsx   # 打卡按钮 + confetti
 ├── content/days/
-│   └── 01.md ~ 30.md         # 教程内容（JS/Node.js 版本）
+│   └── 01.md ~ 30.md      # 教程内容（JS/Node.js 版）
 └── lib/
-    ├── store.ts               # Zustand + localStorage 进度
-    ├── exercises.ts           # 填空验证逻辑
-    └── mdx.ts                # MDX 内容加载
+    ├── store.ts             # Zustand + localStorage 进度
+    ├── exercises.ts         # 填空验证逻辑
+    └── mdx.ts              # MDX 内容加载
 ```
-
----
-
-## 部署
-
-### Vercel（推荐）
-
-Vercel 部署可完整支持 WebContainer 模式。
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=YOUR_REPO_URL)
-
-```bash
-# 用 CLI 部署
-npm i -g vercel
-vercel --prod
-```
-
-### 静态导出（Netlify / GitHub Pages）
-
-```bash
-npm run build
-# 输出到 out/ 目录
-```
-
-> 注意：静态导出模式下 WebContainer 需要额外服务支持，建议使用 Vercel。
 
 ---
 
@@ -114,4 +90,3 @@ npm run build
 ## 相关项目
 
 - **Python 版教程**：[../README.md](../README.md) — 用 Python 从零构建的 30 天教程
-- **在线学习网站**：[https://你的域名.vercel.app](https://vercel.com) — 浏览器里直接学
