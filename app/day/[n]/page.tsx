@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getDayContent } from "@/lib/mdx";
+import { getSourceFiles } from "@/lib/sourceFiles";
 import { DayPageClient } from "@/components/DayPageClient";
 
 interface PageProps {
@@ -17,6 +18,8 @@ export default async function DayPage({ params }: PageProps) {
   const data = getDayContent(day);
   if (!data) notFound();
 
+  const sourceFiles = getSourceFiles(day);
+
   return (
     <DayPageClient
       day={day}
@@ -24,6 +27,7 @@ export default async function DayPage({ params }: PageProps) {
       objectives={data.objectives}
       rawContent={data.content}
       demoCode={data.demoCode}
+      sourceFiles={sourceFiles}
     />
   );
 }
