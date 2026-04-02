@@ -9,38 +9,7 @@ export async function bootWebContainer(): Promise<unknown> {
   return bootPromise;
 }
 
-export async function runCode(
-  code: string,
-  onOutput: (text: string) => void
-): Promise<void> {
-  try {
-    const container = (await bootWebContainer()) as {
-      mount: (files: Record<string, unknown>) => Promise<unknown>;
-      spawn: (cmd: string, args: string[]) => Promise<{
-        output: { pipeTo: (ws: WritableStream<unknown>) => void };
-        exit: Promise<number>;
-      }>;
-    };
-
-    await container.mount({
-      "index.js": { file: { contents: code } },
-    });
-
-    const proc = await container.spawn("node", ["index.js"]);
-
-    proc.output.pipeTo(
-      new WritableStream({
-        write(data: string) {
-          onOutput(data);
-        },
-      })
-    );
-
-    const exitCode = await proc.exit;
-    if (exitCode !== 0) {
-      onOutput(`\n[进程退出，代码: ${exitCode}]`);
-    }
-  } catch (e: unknown) {
-    onOutput(`[错误] ${String(e)}`);
-  }
+/** 重置 WebContainer 状态，用于换一个新容器实例 */
+export function resetWebContainer(): void {
+  bootPromise = null;
 }

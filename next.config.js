@@ -1,14 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
   images: {
     unoptimized: true,
   },
-  // WebContainer 需要在同源环境下运行
-  // 部署到 Vercel 时自动支持，静态导出（next export）时需要特殊处理
+  // WebContainer 需要 Cross-Origin Isolation（COOP + COEP 头）
+  // 否则 SharedArrayBuffer 无法使用，WebContainer 会报错
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+          { key: "Cross-Origin-Embedder-Policy", value: "require-corp" },
+        ],
+      },
+    ];
+  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
-      // WebContainer 只能在浏览器端运行
       config.resolve.fallback = {
         ...config.resolve.fallback,
         fs: false,
