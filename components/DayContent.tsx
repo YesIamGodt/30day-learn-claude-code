@@ -13,7 +13,10 @@ function parseMarkdown(raw: string, demoCode: string): React.ReactNode[] {
   const nodes: React.ReactNode[] = [];
   const lines = raw.split("\n");
   let i = 0;
-  let skippedFirstJsBlock = false;
+
+  // 计算 ```js/jscript 代码块的数量，跳过最后一个（它会在 CodeEditor 中展示）
+  const jsBlockCount = (raw.match(/```(?:js|javascript)\n[\s\S]*?```/g) ?? []).length;
+  let jsBlockIndex = 0;
 
   while (i < lines.length) {
     const line = lines[i];
@@ -37,14 +40,13 @@ function parseMarkdown(raw: string, demoCode: string): React.ReactNode[] {
       }
       i++; // skip closing ```
 
-      // 第一个 js/code 代码块已在上方 CodeEditor 展示，跳过
-      if (!skippedFirstJsBlock && (lang === "js" || lang === "javascript")) {
-        skippedFirstJsBlock = true;
-        continue;
+      // 最后一个 js/code 代码块由 CodeEditor 展示，跳过
+      if ((lang === "js" || lang === "javascript")) {
+        jsBlockIndex++;
+        if (jsBlockIndex === jsBlockCount) continue;
       }
 
       const codeText = codeLines.join("\n");
-      // 非 JS 代码块，用 pre 展示
       nodes.push(
         <pre
           key={`code-${i}`}

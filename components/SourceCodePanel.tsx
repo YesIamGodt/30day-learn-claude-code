@@ -222,10 +222,10 @@ export function SourceCodePanel({
           )}
 
           {/* Content area */}
-          <div className="flex-1 overflow-auto">
+          <div className="flex-1 overflow-auto h-[600px]">
             {activeTab === "source" && (
               <Editor
-                height="100%"
+                height="600px"
                 defaultLanguage="python"
                 value={currentFile.content}
                 theme="vs-dark"

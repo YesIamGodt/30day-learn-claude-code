@@ -22,7 +22,7 @@ export function CodeEditor({ code, readOnly = false, height = 300 }: CodeEditorP
     }, 10);
   };
 
-  const handleRun = () => {
+  const handleRun = async () => {
     setRunning(true);
     setOutput("");
 
@@ -35,9 +35,14 @@ export function CodeEditor({ code, readOnly = false, height = 300 }: CodeEditorP
     };
 
     try {
+      // Wrap in async IIFE so that top-level `await` in user code works.
+      // This lets tutorial demos use `async/await` freely.
       // eslint-disable-next-line no-new-func
-      const fn = new Function("console", code);
-      fn(mockConsole);
+      const fn = new Function(
+        "console",
+        `return (async function() { ${code} })();`
+      );
+      const result = await fn(mockConsole);
       if (logs.length === 0) {
         appendOutput("(无输出)\n");
       } else {

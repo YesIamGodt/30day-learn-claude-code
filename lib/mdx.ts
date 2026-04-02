@@ -31,9 +31,12 @@ export function getDayContent(day: number): DayContent | null {
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
 
-  // 提取 ```js 代码块作为演示代码
-  const codeBlockMatch = content.match(/```(?:js|javascript)\n([\s\S]*?)```/);
-  const demoCode = codeBlockMatch ? codeBlockMatch[1].trim() : "// 代码示例\nconsole.log('Hello!');";
+  // 提取 ```js 代码块作为演示代码（取最后一个，完整 Demo 在底部）
+  const codeBlocks = Array.from(content.matchAll(/```(?:js|javascript)\n([\s\S]*?)```/g));
+  const demoCode =
+    codeBlocks.length > 0
+      ? codeBlocks[codeBlocks.length - 1][1].trim()
+      : "// 代码示例\nconsole.log('Hello!');";
 
   return {
     day,
