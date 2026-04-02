@@ -17,6 +17,11 @@ export interface DayContent {
     errorMessages: string[];
     initialCode: string;
   }[];
+  sourceFiles: {
+    path: string;
+    title: string;
+    explainer: string;
+  }[];
 }
 
 export function getDayContent(day: number): DayContent | null {
@@ -37,5 +42,6 @@ export function getDayContent(day: number): DayContent | null {
     content,
     demoCode,
     exercises: [],
+    sourceFiles: data.sourceFiles ?? [],
   };
 }
