@@ -2,7 +2,11 @@
 
 import { useState } from "react";
 import Editor from "@monaco-editor/react";
+import { loader } from "@monaco-editor/react";
 import { FileCode, BookOpen, ChevronLeft, ChevronRight } from "lucide-react";
+
+// Configure Monaco to use local build (copied to public/monaco/)
+loader.config({ paths: { vs: "/monaco/vs" } });
 
 export interface SourceFile {
   path: string;       // relative to src/, e.g. "tools/bash.py"

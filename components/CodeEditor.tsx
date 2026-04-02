@@ -2,7 +2,11 @@
 
 import { useState, useRef } from "react";
 import Editor from "@monaco-editor/react";
+import { loader } from "@monaco-editor/react";
 import { Play, Trash2, Loader2 } from "lucide-react";
+
+// Configure Monaco to use local build (copied to public/monaco/)
+loader.config({ paths: { vs: "/monaco/vs" } });
 
 interface CodeEditorProps {
   code: string;
